@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahabat Konselor - Layanan Konseling Siswa</title>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat ikon (Heroicons) -->
+    <script src="https://unpkg.com/heroicons@2.1.3/24/outline/index.js"></script>
+    <style>
+        /* Menggunakan font Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Sembunyikan semua halaman secara default */
+        .page-content {
+            display: none;
+        }
+        /* Tampilkan halaman yang aktif */
+        .page-content.active {
+            display: block;
+        }
+        /* Style untuk link nav aktif */
+        .nav-link.active {
+            color: white;
+            background-color: #2563eb; /* bg-blue-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Kontainer Utama -->
+    <div class="flex flex-col min-h-screen">
+
+        <!-- Header / Navbar -->
+        <header class="bg-blue-700 text-white shadow-md sticky top-0 z-50">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <!-- Logo / Judul Web -->
+                <h1 class="text-2xl font-bold">
+                    <span class="inline-block w-6 h-6 text-yellow-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-6.364-.386 1.591-1.591M3 12h2.25m.386-6.364 1.591 1.591M12 12a2.25 2.25 0 0 0-2.25 2.25v.75m1.5-3V9.75m-1.5 0h.008v.008H12V9.75m0-1.5a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75v-.008a.75.75 0 0 0-.75-.75H12Z" /></svg></span>
+                    Sahabat Konselor
+                </h1>
+
+                <!-- Navigasi Desktop -->
+                <nav class="hidden md:flex space-x-2">
+                    <a href="#beranda" class="nav-link active py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="beranda">Beranda</a>
+                    <a href="#chat" class="nav-link py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="chat">Chat Konselor</a>
+                    <a href="#jadwal" class="nav-link py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="jadwal">Jadwal Konseling</a>
+                    <a href="#artikel" class="nav-link py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="artikel">Artikel Motivasi</a>
+                    <a href="#lapor" class="nav-link py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="lapor">Lapor Masalah</a>
+                </nav>
+
+                <!-- Tombol Menu Mobile -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigasi Mobile (Dropdown) -->
+            <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+                <nav class="flex flex-col space-y-2">
+                    <a href="#beranda" class="nav-link active py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="beranda">Beranda</a>
+                    <a href="#chat" class="nav-link py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="chat">Chat Konselor</a>
+                    <a href="#jadwal" class="nav-link py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="jadwal">Jadwal Konseling</a>
+                    <a href="#artikel" class="nav-link py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="artikel">Artikel Motivasi</a>
+                    <a href="#lapor" class="nav-link py-2 px-4 rounded-lg hover:bg-blue-600 transition-all font-medium" data-page="lapor">Lapor Masalah</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Konten Utama -->
+        <main class="container mx-auto p-4 md:p-8 flex-grow">
+
+            <!-- Halaman: Beranda -->
+            <section id="beranda" class="page-content active">
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <h2 class="text-4xl font-bold text-blue-700 mb-4">Selamat Datang di Sahabat Konselor</h2>
+                    <p class="text-lg text-gray-600 mb-8">Kami di sini untuk mendengarkan, mendukung, dan membantumu menemukan solusi. Kamu tidak sendirian.</p>
+                    <img src="https://placehold.co/800x400/3B82F6/FFFFFF?text=Ilustrasi+Dukungan+Siswa" alt="Ilustrasi dukungan siswa" class="w-full max-w-2xl mx-auto rounded-lg shadow-md mb-8">
+
+                    <!-- Menu Aksi Cepat -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Kartu Chat -->
+                        <div class="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-3">Butuh Bicara?</h3>
+                            <p class="text-gray-600 mb-4">Mulai obrolan anonim dengan konselor kami.</p>
+                            <button class="nav-link-button w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700" data-page="chat">Mulai Chat</button>
+                        </div>
+                        <!-- Kartu Jadwal -->
+                        <div class="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all">
+                            <h3 class="text-xl font-semibold text-green-800 mb-3">Atur Janji Temu</h3>
+                            <p class="text-gray-600 mb-4">Buat jadwal konseling tatap muka atau online.</p>
+                            <button class="nav-link-button w-full bg-green-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-green-700" data-page="jadwal">Buat Jadwal</button>
+                        </div>
+                        <!-- Kartu Artikel -->
+                        <div class="bg-yellow-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all">
+                            <h3 class="text-xl font-semibold text-yellow-800 mb-3">Baca Artikel</h3>
+                            <p class="text-gray-600 mb-4">Dapatkan motivasi dan tips kesehatan mental.</p>
+                            <button class="nav-link-button w-full bg-yellow-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-yellow-600" data-page="artikel">Lihat Artikel</button>
+                        </div>
+                        <!-- Kartu Lapor -->
+                        <div class="bg-red-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all">
+                            <h3 class="text-xl font-semibold text-red-800 mb-3">Ada Masalah?</h3>
+                            <p class="text-gray-600 mb-4">Laporkan insiden (mis. bullying) secara anonim.</p>
+                            <button class="nav-link-button w-full bg-red-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-red-700" data-page="lapor">Lapor Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Halaman: Chat Konselor -->
+            <section id="chat" class="page-content">
+                <div class="bg-white p-8 rounded-xl shadow-lg max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">Chat dengan Konselor</h2>
+                    <p class="text-gray-600 text-center mb-8">Fitur chat ini adalah simulasi. Di versi asli, ini akan terhubung ke konselor secara anonim. Untuk saat ini, silakan tinggalkan pesan.</p>
+
+                    <!-- Simulasi Form "Tinggalkan Pesan" -->
+                    <form id="chat-form" class="space-y-6">
+                        <div>
+                            <label for="chat-name" class="block text-sm font-medium text-gray-700">Nama Panggilan (Boleh Anonim)</label>
+                            <input type="text" id="chat-name" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="Siswa Peduli">
+                        </div>
+                        <div>
+                            <label for="chat-topic" class="block text-sm font-medium text-gray-700">Topik Permasalahan</label>
+                            <select id="chat-topic" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 bg-white focus:ring-blue-500 focus:border-blue-500">
+                                <option>Akademik</option>
+                                <option>Keluarga</option>
+                                <option>Perundungan (Bullying)</option>
+                                <option>Percintaan</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="chat-message" class="block text-sm font-medium text-gray-700">Pesan Anda</label>
+                            <textarea id="chat-message" rows="5" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="Ceritakan apa yang kamu rasakan..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="w-full md:w-auto bg-blue-600 text-white py-3 px-8 rounded-lg font-semibold hover:bg-blue-700 transition-all text-lg">
+                                Kirim Pesan
+                            </button>
+                        </div>
+                    </form>
+                    <!-- Pesan Sukses -->
+                    <div id="chat-success" class="hidden mt-6 p-4 rounded-lg bg-green-100 text-green-800 text-center">
+                        Pesan Anda telah terkirim (simulasi). Konselor akan segera merespon di jam kerja.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Halaman: Jadwal Konseling -->
+            <section id="jadwal" class="page-content">
+                <div class="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-green-700 mb-6 text-center">Buat Janji Temu Konseling</h2>
+                    <p class="text-gray-600 text-center mb-8">Lihat jadwal ketersediaan konselor dan ajukan permintaan janji temu. Kami akan mengkonfirmasi jadwalmu via email/kontak sekolah.</p>
+
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <!-- Form Pengajuan -->
+                        <div class="w-full md:w-1/2">
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Formulir Pengajuan</h3>
+                            <form id="jadwal-form" class="space-y-4">
+                                <div>
+                                    <label for="jadwal-name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                                    <input type="text" id="jadwal-name" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-green-500 focus:border-green-500" placeholder="Nama Siswa" required>
+                                </div>
+                                <div>
+                                    <label for="jadwal-kelas" class="block text-sm font-medium text-gray-700">Kelas</label>
+                                    <input type="text" id="jadwal-kelas" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-green-500 focus:border-green-500" placeholder="Contoh: XI IPA 2" required>
+                                </div>
+                                 <div>
+                                    <label for="jadwal-konselor" class="block text-sm font-medium text-gray-700">Pilih Konselor</label>
+                                    <select id="jadwal-konselor" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 bg-white focus:ring-green-500 focus:border-green-500">
+                                        <option>Pak Budi Santoso, S.Pd.</option>
+                                        <option>Ibu Rina Wijaya, S.Psi.</option>
+                                        <option>Siapapun yang tersedia</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="jadwal-datetime" class="block text-sm font-medium text-gray-700">Pilih Tanggal & Waktu</label>
+                                    <input type="datetime-local" id="jadwal-datetime" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-green-500 focus:border-green-500" required>
+                                </div>
+                                <div>
+                                    <label for="jadwal-topik" class="block text-sm font-medium text-gray-700">Topik Singkat</label>
+                                    <input type="text" id="jadwal-topik" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-green-500 focus:border-green-500" placeholder="Cth: Kesulitan belajar, masalah teman">
+                                </div>
+                                <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-all text-lg">
+                                    Ajukan Jadwal
+                                </button>
+                            </form>
+                             <!-- Pesan Sukses -->
+                            <div id="jadwal-success" class="hidden mt-6 p-4 rounded-lg bg-green-100 text-green-800 text-center">
+                                Pengajuan jadwal terkirim (simulasi). Harap tunggu konfirmasi dari konselor.
+                            </div>
+                        </div>
+                        <!-- Jadwal Ketersediaan -->
+                        <div class="w-full md:w-1/2">
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Jadwal Ketersediaan Konselor</h3>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-gray-700">Pak Budi Santoso, S.Pd.</h4>
+                                    <p class="text-sm text-gray-600">Senin, Rabu, Jumat (08.00 - 15.00)</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="font-semibold text-gray-700">Ibu Rina Wijaya, S.Psi.</h4>
+                                    <p class="text-sm text-gray-600">Selasa, Kamis (08.00 - 15.00)</p>
+                                </div>
+                                <hr class="my-4">
+                                <p class="text-sm text-gray-600"><strong>Catatan:</strong> Jadwal dapat berubah. Harap buat janji temu terlebih dahulu untuk memastikan ketersediaan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Halaman: Artikel Motivasi -->
+            <section id="artikel" class="page-content">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-yellow-700 mb-8 text-center">Artikel Motivasi & Kesehatan Mental</h2>
+                    
+                    <!-- Grid Artikel -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Artikel 1 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition-all">
+                            <img src="https://placehold.co/600x400/F59E0B/FFFFFF?text=Tips+Anti+Stres" alt="Gambar artikel" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">5 Tips Jitu Mengatasi Stres Jelang Ujian</h3>
+                                <p class="text-gray-600 mb-4">Ujian seringkali bikin cemas. Yuk, simak cara mudah untuk tetap tenang dan fokus...</p>
+                                <a href="#" class="font-medium text-yellow-600 hover:text-yellow-700">Baca Selengkapnya &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Artikel 2 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition-all">
+                            <img src="https://placehold.co/600x400/10B981/FFFFFF?text=Kekuatan+Mendengar" alt="Gambar artikel" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Kekuatan Mendengar: Cara Menjadi Teman yang Baik</h3>
+                                <p class="text-gray-600 mb-4">Kadang, yang dibutuhkan temanmu hanyalah didengarkan. Pelajari seni mendengar aktif...</p>
+                                <a href="#" class="font-medium text-green-600 hover:text-green-700">Baca Selengkapnya &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Artikel 3 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-xl transition-all">
+                            <img src="https://placehold.co/600x400/8B5CF6/FFFFFF?text=Mengenal+Diri" alt="Gambar artikel" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Mengenal Diri Sendiri: Awal dari Kebahagiaan</h3>
+                                <p class="text-gray-600 mb-4">Apa passion-mu? Apa kelebihan dan kekuranganmu? Kenali dirimu lebih dalam...</p>
+                                <a href="#" class="font-medium text-purple-600 hover:text-purple-700">Baca Selengkapnya &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Tambahkan artikel lain di sini -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Halaman: Lapor Masalah -->
+            <section id="lapor" class="page-content">
+                <div class="bg-white p-8 rounded-xl shadow-lg max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold text-red-700 mb-4 text-center">Lapor Masalah (Aman & Rahasia)</h2>
+                    <p class="text-gray-600 text-center mb-8">Jika kamu melihat atau mengalami perundungan (bullying), pelecehan, atau masalah serius lainnya, laporkan di sini. <strong>Identitasmu 100% dirahasiakan.</strong></p>
+
+                    <form id="lapor-form" class="space-y-6">
+                        <div>
+                            <label for="lapor-jenis" class="block text-sm font-medium text-gray-700">Jenis Laporan</label>
+                            <select id="lapor-jenis" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 bg-white focus:ring-red-500 focus:border-red-500" required>
+                                <option value="">-- Pilih Jenis Masalah --</option>
+                                <option>Perundungan (Bullying) Fisik</option>
+                                <option>Perundungan (Bullying) Verbal</option>
+                                <option>Perundungan (Bullying) Cyber</option>
+                                <option>Pelecehan Seksual</option>
+                                <option>Tekanan Akademik Berlebih</option>
+                                <option>Masalah Fasilitas Sekolah</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="lapor-deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi Kejadian</label>
+                            <textarea id="lapor-deskripsi" rows="6" class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-red-500 focus:border-red-500" placeholder="Jelaskan apa yang terjadi, siapa yang terlibat (jika tahu), kapan, dan di mana. Berikan detail sebanyak mungkin." required></textarea>
+                        </div>
+                         <div>
+                            <label for="lapor-bukti" class="block text-sm font-medium text-gray-700">Unggah Bukti (Opsional)</label>
+                            <input type="file" id="lapor-bukti" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100">
+                            <p class="text-xs text-gray-500 mt-1">Bisa berupa screenshot chat, foto, atau video (jika ada).</p>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="w-full md:w-auto bg-red-600 text-white py-3 px-8 rounded-lg font-semibold hover:bg-red-700 transition-all text-lg">
+                                Kirim Laporan Rahasia
+                            </button>
+                        </div>
+                    </form>
+                    <!-- Pesan Sukses -->
+                    <div id="lapor-success" class="hidden mt-6 p-4 rounded-lg bg-green-100 text-green-800 text-center">
+                        Laporan Anda telah terkirim secara anonim (simulasi). Terima kasih atas kepedulian Anda. Tim kami akan segera menindaklanjuti.
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-gray-300 mt-12 py-8">
+            <div class="container mx-auto px-4 text-center">
+                <p>&copy; 2025 Sahabat Konselor. Dibuat untuk mendukung kesehatan mental siswa.</p>
+                <p class="text-sm mt-2">Layanan ini bersifat rahasia dan profesional.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript untuk Navigasi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinkButtons = document.querySelectorAll('.nav-link-button');
+            const pages = document.querySelectorAll('.page-content');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Fungsi untuk menampilkan halaman
+            function showPage(pageId) {
+                // Sembunyikan semua halaman
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Tampilkan halaman yang dipilih
+                const activePage = document.getElementById(pageId);
+                if (activePage) {
+                    activePage.classList.add('active');
+                }
+
+                // Update status aktif di nav links
+                navLinks.forEach(link => {
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Tutup menu mobile setelah diklik
+                mobileMenu.classList.add('hidden');
+            }
+
+            // Event listener untuk semua link navigasi
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.dataset.page;
+                    showPage(pageId);
+                    // Update URL hash
+                    window.location.hash = pageId;
+                });
+            });
+
+             // Event listener untuk tombol link di beranda
+            navLinkButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.dataset.page;
+                    showPage(pageId);
+                    // Update URL hash
+                    window.location.hash = pageId;
+                    // Scroll ke atas
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            // Event listener untuk tombol menu mobile
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Cek hash di URL saat halaman dimuat
+            const initialPage = window.location.hash.substring(1) || 'beranda';
+            showPage(initialPage);
+
+            // --- Logika Form (Simulasi) ---
+
+            // Form Chat
+            const chatForm = document.getElementById('chat-form');
+            if (chatForm) {
+                chatForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    document.getElementById('chat-success').classList.remove('hidden');
+                    chatForm.reset();
+                    setTimeout(() => {
+                        document.getElementById('chat-success').classList.add('hidden');
+                    }, 5000);
+                });
+            }
+
+            // Form Jadwal
+            const jadwalForm = document.getElementById('jadwal-form');
+            if (jadwalForm) {
+                jadwalForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    document.getElementById('jadwal-success').classList.remove('hidden');
+                    jadwalForm.reset();
+                    setTimeout(() => {
+                        document.getElementById('jadwal-success').classList.add('hidden');
+                    }, 5000);
+                });
+            }
+
+            // Form Lapor
+            const laporForm = document.getElementById('lapor-form');
+            if (laporForm) {
+                laporForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    document.getElementById('lapor-success').classList.remove('hidden');
+                    laporForm.reset();
+                    setTimeout(() => {
+                        document.getElementById('lapor-success').classList.add('hidden');
+                    }, 5000);
+                });
+            }
+
+        });
+    </script>
+
+</body>
+</html>
